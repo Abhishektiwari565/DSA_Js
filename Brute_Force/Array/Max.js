@@ -8,3 +8,4 @@ function FindMaxInArray(arr){
     return max;
 }
 console.log(FindMaxInArray([8,4,5,1,9]));
+
