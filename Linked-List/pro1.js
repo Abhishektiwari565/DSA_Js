@@ -1,3 +1,6 @@
+
+
+
 class Node{
     constructor(data){
         this.data=data;
@@ -8,18 +11,19 @@ class Node{
 class LinkedList{
     constructor(){
         this.head=null;
-
     }
 
     addFirst(data){
-        let newNode=new Node(data);
-        newNode.next=this.head;//head=null 
-        this.head=newNode;//30 -> 20 -> 10 -> null
+        let newNode=new Node(data)
+        newNode.next=this.head;
+        this.head=newNode;
     }
+
     addLast(data){
-        let newNode=new Node(data);
+        let newNode=new Node(data) 
         if(!this.head){
-            this.head=newNode
+            newNode.next=this.head;
+            this.head=newNode;
             return;
         }
         let current=this.head;
@@ -28,42 +32,58 @@ class LinkedList{
         }
         current.next=newNode;
     }
-    addAtIndex(data,index){
-        if(index>0 || index>this.size()){
-            console.error("Invalid index");
-            return;
-        }
-
-        let newNode=new Node(data);
-        if(index===o){
-            newNode.next=this.head;
-           this.head=newNode;
-           return;
-        }
-        let current=this.head;
-        for(let i=0;i<index-1;i++){
-            currernt=currernt.next;
-        }
-        newNode.next=current.next;
-        current.next=newNode;
-    }
-    display(){
+    size(){
+         let count = 0;
     let current = this.head;
-    let result = "";
 
     while(current){
-        result += current.data + " -> ";
+        count++;
         current = current.next;
     }
 
-    result += "null";
-    console.log(result);
+    return count;
+    }
+
+   addAtIndex(data,index){
+
+    if(index < 0 || index > this.size()){
+        console.error("Invalid index");
+        return;
+    }
+
+    let newNode = new Node(data);
+
+    if(index === 0){
+        newNode.next = this.head;
+        this.head = newNode;
+        return;
+    }
+
+    let current = this.head;
+
+    for(let i = 0; i < index-1; i++){
+        current = current.next;
+    }
+
+    newNode.next = current.next;
+    current.next = newNode;
 }
+    display(){
+        let current=this.head;
+        let result=""
+        while(current){
+            result+=current.data+"->";
+            current=current.next;
+        }
+        result+="null";
+        console.log(result);
+    }
+
 }
 let list=new LinkedList();
-list.addLast(10);
-list.addLast(20);
-list.addLast(30);
+list.addLast(10)
+list.addLast(20)
+list.addLast(30)
 
+list.addAtIndex(40,1)
 list.display();
-
