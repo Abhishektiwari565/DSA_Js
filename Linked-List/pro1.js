@@ -76,6 +76,7 @@ removeFirst(){
     this.head=this.head.next;
 
 }
+//remove last element form linkedList
 removeLast(data){
     if(!this.head){
         console.error("List is empty");
@@ -91,6 +92,22 @@ removeLast(data){
         current=current.next;
     }
     current.next=null;
+}
+//remove at specific position
+removeAtIndex(index){
+    if(index<0||index>this.size()){
+        console.error("Invalid Index");
+        return;
+    }
+    if(index==0){
+        this.head=this.head.next;
+        return
+    }
+    let current=this.head;
+    for(let i=0;i<index-1;i++){
+        current=current.next;
+    }
+    current.next=current.next.next;
 }
     // to display all the operations
     display(){
@@ -110,5 +127,5 @@ list.addLast(10)
 list.addLast(20)
 list.addLast(30)
 
-list.removeLast();
+list.removeAtIndex(1);
 list.display();
