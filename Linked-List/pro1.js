@@ -1,6 +1,4 @@
 
-
-
 class Node{
     constructor(data){
         this.data=data;
@@ -13,12 +11,13 @@ class LinkedList{
         this.head=null;
     }
 
+    //Add element at before of another element
     addFirst(data){
         let newNode=new Node(data)
         newNode.next=this.head;
         this.head=newNode;
     }
-
+    //Add element at after of another element
     addLast(data){
         let newNode=new Node(data) 
         if(!this.head){
@@ -43,7 +42,7 @@ class LinkedList{
 
     return count;
     }
-
+    //Add element at specific position
    addAtIndex(data,index){
 
     if(index < 0 || index > this.size()){
@@ -68,6 +67,32 @@ class LinkedList{
     newNode.next = current.next;
     current.next = newNode;
 }
+//remove first element from linkedList
+removeFirst(){
+    if(!this.head){
+        console.error("List is empty!");
+        return;
+    }
+    this.head=this.head.next;
+
+}
+removeLast(data){
+    if(!this.head){
+        console.error("List is empty");
+        return;
+    }
+    if(!this.head.next){
+        this.head=null;
+        return;
+    }
+
+    let current=this.head;
+    while(current.next.next){
+        current=current.next;
+    }
+    current.next=null;
+}
+    // to display all the operations
     display(){
         let current=this.head;
         let result=""
@@ -85,5 +110,5 @@ list.addLast(10)
 list.addLast(20)
 list.addLast(30)
 
-list.addAtIndex(40,1)
+list.removeLast();
 list.display();
