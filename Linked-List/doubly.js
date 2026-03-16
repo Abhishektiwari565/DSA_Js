@@ -35,11 +35,11 @@ class linkedList{
         this.countLength();
     }
     addAtIndex(index,value){
-        if(index<0 || index>this.length()){
+        if(index<0 || index>this.length){
             console.log("Incorrect Index");
             return;
         }
-        let node=new Node();
+        let node=new Node(value);
         if(!this.head){
             this.head=node;
             return;
@@ -50,7 +50,14 @@ class linkedList{
             this.head=node;
             return;
         }
-        for(let i=0;i<)
+        let current=this.head;
+        for(let i=0;i<index-1;i++){
+            current=current.next;
+        }
+        node.prev=current;//1->2->5->3->
+        node.next=current.next;
+        current.next.prev=node;
+        current.next=node;
     }
     printForward(){
         let current=this.head;
@@ -80,6 +87,7 @@ list.push(1)
 list.push(2)
 list.push(3)
 list.push(4);
+list.addAtIndex(2,5);
 
 list.printForward();
 list.printBackward();
