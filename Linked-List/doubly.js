@@ -1,6 +1,6 @@
 class Node{
     constructor(value){
-        this.prv=null;
+        this.prev=null;
         this.data=value;
         this.next=null;
     }
@@ -9,11 +9,21 @@ class Node{
 class linkedList{
     constructor(){
         this.head=null;
+        this.length=0;
+    }
+    countLength(){
+        let current=this.head;
+        this.length=0;
+        while(current.next){
+            this.length++;
+            current=current.next;
+        }
     }
     push(value){
         let node=new Node(value);
         if(!this.head){
             this.head=node;
+            this.countLength();
             return;
         }
         let current=this.head;
@@ -22,6 +32,25 @@ class linkedList{
         }
         node.prev=current;
         current.next=node;
+        this.countLength();
+    }
+    addAtIndex(index,value){
+        if(index<0 || index>this.length()){
+            console.log("Incorrect Index");
+            return;
+        }
+        let node=new Node();
+        if(!this.head){
+            this.head=node;
+            return;
+        }
+        if(index==0){
+            this.head.prev=node;
+            node.next=this.head;
+            this.head=node;
+            return;
+        }
+        for(let i=0;i<)
     }
     printForward(){
         let current=this.head;
