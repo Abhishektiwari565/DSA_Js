@@ -59,6 +59,35 @@ class linkedList{
         current.next.prev=node;
         current.next=node;
     }
+    removeHead(){
+        if(!this.head){
+            console.log("list is empty!");123
+            return;
+        }
+        if(!this.head.next){
+            this.head=null;
+            return;
+        }
+        this.head=this.head.next;
+        this.head.prev=null;
+    }
+    removeAtIndex(index){
+        if(!this.head){
+            console.log("list is empty");
+            return;
+        }
+        if(index==0){
+            this.head=this.head.next;
+            this.head.prev=null;
+            return;
+        }
+        let current=this.head;
+        for(let i=0;i<index-1;i++){
+            current=current.next;
+        }
+        current.next=current.next.next; //1 -> 2 -> 3 -> null
+        current.next.prev=current;
+    }
     printForward(){
         let current=this.head;
         let result='';
@@ -88,6 +117,9 @@ list.push(2)
 list.push(3)
 list.push(4);
 list.addAtIndex(2,5);
+
+list.removeAtIndex(1);
+
 
 list.printForward();
 list.printBackward();
