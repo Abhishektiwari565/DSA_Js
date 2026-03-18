@@ -25,12 +25,24 @@ class Stack{
         }
         this.top=this.top.next;
     }
+    peek(){
+       if(!this.top){
+            console.log("stack is empty")
+            return ;
+        }
+        console.log(this.top.data); 
+    }
+    print(){
+        let current=this.top;
+        while(current){
+            console.log("["+current.data+"]");
+            current=current.next;
+        }
+    }
 }
 let stack=new Stack();
 stack.push(1);
 stack.push(2);
 stack.push(3);
-stack.pop();
 
-console.log(stack.top.data);
-console.log(stack.top.next.data);
+stack.print();
