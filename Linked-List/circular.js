@@ -33,8 +33,20 @@ class LinkedList{
         for(let i=0;i<index-1;i++){
             current=current.next;
         }
+        node.next=current.next;
         current.next=node;
-        node.next=current.next.next;
+    }
+    pop(){
+        if(!this.head){
+            console.log("list is empty");
+            return;
+        }
+        let current=this.head;
+        while(current.next!==this.head){
+            current=current.next;
+        }
+        current.next=this.head.next;
+        this.head=this.head.next;
     }
     print(){
         let current=this.head;
@@ -54,5 +66,6 @@ list.push(8);
 list.push(12);
 list.push(16);
 list.insertAtIndex(2,20);
+list.pop();
 
 list.print();
