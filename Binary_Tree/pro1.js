@@ -45,6 +45,7 @@ bt.insert(40);
 bt.insert(35);
 bt.insert(80);
 bt.insert(90);
+
 console.log(bt.root.data);
 console.log(bt.root.left.data);
 console.log(bt.root.right.data);
