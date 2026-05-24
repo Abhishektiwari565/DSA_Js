@@ -15,4 +15,4 @@ This is a simple Student Management System built using JavaScript. It allows you
 - Loops
 - Functions
 
-screenshot:
+screenshot:<img width="247" height="283" alt="image" src="https://github.com/user-attachments/assets/c5dc3bf7-8547-449f-91e8-52400960c111" />
